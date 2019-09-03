@@ -9,7 +9,7 @@ export class BoxCollection extends Component {
     createJoinArray = (numRows, numColumns) => {
         const numJoin = parseInt(numRows) * parseInt(numColumns);
         let array = Array(numJoin).fill(null);
-        for (let i = 0; i < Math.floor(Math.sqrt(numJoin)); i++) {
+        for (let i = 0; i < Math.ceil(Math.sqrt(numJoin)); i++) {
             array[Math.floor(Math.random()*(array.length-1))] = 1;
         }
         const xCenter = Math.ceil(numRows/2) - 1;

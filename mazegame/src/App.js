@@ -11,8 +11,21 @@ export class App extends Component {
   }
 
   componentWillMount() {
-    const numberOfRow = prompt("please enter the number of rows: ");
-    const numberOfColumn = prompt("please enter the number of columns: ");
+    let numberOfRow = prompt("please enter the number of rows: ");
+    let numberOfColumn = prompt("please enter the number of columns: ");
+
+    if (numberOfRow == null || numberOfColumn == null) {
+      alert('you entered a wrong value!');
+      window.location.reload();
+    }
+    if (numberOfRow.length === 0 || numberOfColumn.length === 0) {
+      alert('you entered a wrong value!');
+      window.location.reload();
+    }
+    if (isNaN(numberOfRow) || isNaN(numberOfColumn)) {
+      alert('you entered a wrong value!');
+      window.location.reload();
+    }
 
     this.setState({row: parseInt(numberOfRow), column: parseInt(numberOfColumn)});
 
@@ -20,7 +33,7 @@ export class App extends Component {
 
   render() {
     const {row, column} = this.state;
-
+    
     return (
       <div>
         <Container row={row} column={column} />   
